@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"$schema": "https://turborepo.com/schema.json",
 	"ui": "tui",
 	"tasks": {
@@ -22,4 +23,105 @@
 			"cache": false
 		}
 	}
+=======
+    "$schema": "https://turborepo.com/schema.json",
+    "ui": "tui",
+    "tasks": {
+        "topo": {
+            "dependsOn": [
+                "^topo"
+            ]
+        },
+        "build": {
+            "dependsOn": [
+                "^build"
+            ],
+            "inputs": [
+                "$TURBO_DEFAULT$",
+                ".env*"
+            ],
+            "outputs": [
+                ".cache/tsbuildinfo.json",
+                "dist/**"
+            ]
+        },
+        "db:migrate:dev": {
+            "cache": false,
+            "persistent": true
+        },
+        "db:migrate:deploy": {
+            "cache": false
+        },
+        "db:push": {
+            "cache": false
+        },
+        "db:seed": {
+            "cache": false
+        },
+        "dev": {
+            "dependsOn": [
+                "^dev"
+            ],
+            "cache": false,
+            "persistent": true
+        },
+        "generate": {
+            "dependsOn": [
+                "^generate"
+            ],
+            "cache": false
+        },
+        "format": {
+            "outputs": [
+                ".cache/.prettiercache"
+            ],
+            "outputLogs": "new-only"
+        },
+        "lint": {
+            "dependsOn": [
+                "^topo",
+                "^build"
+            ],
+            "outputs": [
+                ".cache/.eslintcache"
+            ]
+        },
+        "typecheck": {
+            "dependsOn": [
+                "^topo",
+                "^build"
+            ],
+            "outputs": [
+                ".cache/tsbuildinfo.json"
+            ]
+        },
+        "clean": {
+            "cache": false
+        },
+        "//#clean": {
+            "cache": false
+        },
+        "push": {
+            "cache": false,
+            "interactive": true
+        },
+        "studio": {
+            "cache": false,
+            "persistent": true
+        }
+    },
+    "globalEnv": [
+        "POSTGRES_URL",
+        "BETTER_AUTH_SECRET",
+        "BETTER_AUTH_TRUSTED_ORIGINS"
+    ],
+    "globalPassThroughEnv": [
+        "NODE_ENV",
+        "CI",
+        "VERCEL",
+        "VERCEL_ENV",
+        "VERCEL_URL",
+        "npm_lifecycle_event"
+    ]
+>>>>>>> restart
 }
