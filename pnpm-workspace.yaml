@@ -1,8 +1,4 @@
 packages:
-<<<<<<< HEAD
-  - "apps/*"
-  - "packages/*"
-=======
     - apps/*
     - packages/*
     - tooling/*
@@ -13,4 +9,3 @@ catalog:
     tailwindcss: ^4.1.13
     typescript: ^5.6.3
     zod: ^4.1.11
->>>>>>> restart

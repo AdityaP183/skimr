@@ -1,29 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "https://turborepo.com/schema.json",
-	"ui": "tui",
-	"tasks": {
-		"build": {
-			"dependsOn": ["^build"],
-			"inputs": ["$TURBO_DEFAULT$", ".env*"],
-			"outputs": [".next/**", "!.next/cache/**"]
-		},
-		"lint": {
-			"dependsOn": ["^lint"]
-		},
-		"check-types": {
-			"dependsOn": ["^check-types"]
-		},
-		"dev": {
-			"cache": false,
-			"persistent": true
-		},
-		"//#check": {},
-		"//#fix": {
-			"cache": false
-		}
-	}
-=======
     "$schema": "https://turborepo.com/schema.json",
     "ui": "tui",
     "tasks": {
@@ -123,5 +98,4 @@
         "VERCEL_URL",
         "npm_lifecycle_event"
     ]
->>>>>>> restart
 }
