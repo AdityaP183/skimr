@@ -29,6 +29,7 @@
         "@types/eslint__js": "8.42.3",
         "@types/node": "^24.5.2",
         "eslint": "catalog:",
+        "eslint-config-prettier": "^10.1.8",
         "prettier": "catalog:",
         "typescript": "catalog:"
     },

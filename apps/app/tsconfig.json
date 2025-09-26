@@ -1,0 +1,37 @@
+{
+    "extends": "@skimr/tsconfig/nextjs.json",
+    "compilerOptions": {
+        "lib": [
+            "ES2022",
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
+        "jsx": "preserve",
+        "baseUrl": ".",
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ],
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ],
+            "@skimr/ui/*": [
+                "../../packages/ui/src/*"
+            ]
+        },
+        "module": "esnext"
+    },
+    "include": [
+        "next-env.d.ts",
+        "next.config.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        ".next/types/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

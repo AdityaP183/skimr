@@ -1,0 +1,32 @@
+{
+    "name": "app",
+    "version": "0.0.0",
+    "type": "module",
+    "private": true,
+    "scripts": {
+        "dev": "next dev --turbopack",
+        "build": "next build --turbopack",
+        "start": "next start",
+        "lint": "next lint",
+        "lint:fix": "next lint --fix",
+        "typecheck": "tsc --noEmit"
+    },
+    "dependencies": {
+        "@skimr/ui": "workspace:*",
+        "lucide-react": "^0.544.0",
+        "next": "15.5.4",
+        "next-themes": "^0.4.6",
+        "react": "19.1.0",
+        "react-dom": "19.1.0"
+    },
+    "devDependencies": {
+        "@skimr/prettier-config": "workspace:*",
+        "@skimr/eslint-config": "workspace:*",
+        "@skimr/tsconfig": "workspace:*",
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "typescript": "catalog:"
+    },
+    "prettier": "@skimr/prettier-config"
+}

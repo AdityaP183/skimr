@@ -12,10 +12,11 @@
     "prettier": "@skimr/prettier-config",
     "scripts": {
         "build": "turbo run build",
+        "dev": "turbo dev",
         "clean": "git clean -xdf node_modules",
         "clean:workspaces": "turbo run clean",
         "format": "turbo run format --continue -- --cache --cache-location .cache/.prettiercache",
-        "lint": "turbo run lint --continue -- --cache --cache-location .cache/.eslintcache"
+        "lint": "turbo run lint --continue"
     },
     "devDependencies": {
         "@skimr/prettier-config": "workspace:*",
