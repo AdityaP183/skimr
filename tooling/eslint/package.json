@@ -13,16 +13,6 @@
         "format": "prettier --check . --ignore-path ../../.gitignore",
         "typecheck": "tsc --noEmit"
     },
-    "dependencies": {
-        "@eslint/compat": "^1.2.3",
-        "@next/eslint-plugin-next": "^14.2.15",
-        "eslint-plugin-import": "^2.31.0",
-        "eslint-plugin-jsx-a11y": "^6.10.2",
-        "eslint-plugin-react": "^7.37.2",
-        "eslint-plugin-react-hooks": "^5.0.0",
-        "eslint-plugin-turbo": "^2.3.1",
-        "typescript-eslint": "^8.15.0"
-    },
     "devDependencies": {
         "@skimr/prettier-config": "workspace:*",
         "@skimr/tsconfig": "workspace:*",
@@ -31,7 +21,15 @@
         "eslint": "catalog:",
         "eslint-config-prettier": "^10.1.8",
         "prettier": "catalog:",
-        "typescript": "catalog:"
+        "typescript": "catalog:",
+        "@eslint/compat": "^1.2.3",
+        "@next/eslint-plugin-next": "^14.2.15",
+        "eslint-plugin-import": "^2.31.0",
+        "eslint-plugin-jsx-a11y": "^6.10.2",
+        "eslint-plugin-react": "^7.37.2",
+        "eslint-plugin-react-hooks": "^5.0.0",
+        "eslint-plugin-turbo": "^2.3.1",
+        "typescript-eslint": "^8.15.0"
     },
     "prettier": "@skimr/prettier-config"
 }

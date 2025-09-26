@@ -1,21 +1,45 @@
-import nextPlugin from "@next/eslint-plugin-next";
+import js from "@eslint/js";
+import pluginNext from "@next/eslint-plugin-next";
+import eslintConfigPrettier from "eslint-config-prettier";
+import pluginReact from "eslint-plugin-react";
+import pluginReactHooks from "eslint-plugin-react-hooks";
+import globals from "globals";
+import tseslint from "typescript-eslint";
 
+import baseConfig from "./base.js";
 
-
-
-
-/** @type {Awaited<import('typescript-eslint').Config>} */
-export const nextJsConfig = [
-    {
-        files: ["**/*.ts", "**/*.tsx"],
-        plugins: {
-            "@next/next": nextPlugin,
-        },
-        rules: {
-            ...nextPlugin.configs.recommended.rules,
-            ...nextPlugin.configs["core-web-vitals"].rules,
-            // TypeError: context.getAncestors is not a function
-            "@next/next/no-duplicate-head": "off",
-        },
+export default [
+  ...baseConfig,
+  js.configs.recommended,
+  eslintConfigPrettier,
+  ...tseslint.configs.recommended,
+  {
+    ...pluginReact.configs.flat.recommended,
+    languageOptions: {
+      ...pluginReact.configs.flat?.recommended?.languageOptions,
+      globals: {
+        ...globals.serviceworker,
+      },
     },
+  },
+  {
+    plugins: {
+      "@next/next": pluginNext,
+    },
+    rules: {
+      ...pluginNext.configs.recommended.rules,
+      ...pluginNext.configs["core-web-vitals"].rules,
+    },
+  },
+  {
+    plugins: {
+      "react-hooks": pluginReactHooks,
+    },
+    settings: { react: { version: "detect" } },
+    rules: {
+      ...pluginReactHooks.configs.recommended.rules,
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off",
+    },
+  },
 ];
