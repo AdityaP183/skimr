@@ -6,7 +6,7 @@
     "exports": {
         "./base": "./base.js",
         "./nextjs": "./nextjs.js",
-        "./react": "./react.js"
+        "./reactjs": "./react.js"
     },
     "scripts": {
         "clean": "git clean -xdf .cache .turbo node_modules",
@@ -27,6 +27,7 @@
         "@skimr/prettier-config": "workspace:*",
         "@skimr/tsconfig": "workspace:*",
         "@types/eslint__js": "8.42.3",
+        "@types/node": "^24.5.2",
         "eslint": "catalog:",
         "prettier": "catalog:",
         "typescript": "catalog:"
