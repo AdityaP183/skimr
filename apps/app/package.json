@@ -12,7 +12,13 @@
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
+        "@radix-ui/react-dialog": "^1.1.15",
+        "@radix-ui/react-separator": "^1.1.7",
+        "@radix-ui/react-slot": "^1.2.3",
+        "@radix-ui/react-tooltip": "^1.2.8",
         "@skimr/ui": "workspace:*",
+        "@tabler/icons-react": "^3.35.0",
+        "class-variance-authority": "^0.7.1",
         "lucide-react": "^0.544.0",
         "next": "15.5.4",
         "next-themes": "^0.4.6",
@@ -20,8 +26,8 @@
         "react-dom": "19.1.0"
     },
     "devDependencies": {
-        "@skimr/prettier-config": "workspace:*",
         "@skimr/eslint-config": "workspace:*",
+        "@skimr/prettier-config": "workspace:*",
         "@skimr/tsconfig": "workspace:*",
         "@types/node": "^20",
         "@types/react": "^19",

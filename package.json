@@ -4,7 +4,7 @@
     "keywords": [],
     "author": "AdityaP183",
     "license": "ISC",
-    "packageManager": "pnpm@10.17.0",
+    "packageManager": "pnpm@10.17.1",
     "engines": {
         "node": ">=22.13.1",
         "pnpm": "^10.7.0"

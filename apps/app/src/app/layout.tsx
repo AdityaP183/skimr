@@ -1,7 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-
 import "@skimr/ui/globals.css";
-
 import { Providers } from "@/components/providers";
 
 const fontSans = Geist({
