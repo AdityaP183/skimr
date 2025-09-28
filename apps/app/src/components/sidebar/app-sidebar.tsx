@@ -18,6 +18,7 @@ import {
 	IconLayoutSidebarRightExpand,
 } from "@tabler/icons-react";
 import * as React from "react";
+import NavFooter from "./nav-footer";
 import { NavMain } from "./nav-main";
 import NavPinnedTags from "./nav-pinned-tags";
 
@@ -57,14 +58,16 @@ export default function AppSidebar({ ...props }: AppSidebarProps) {
 						</Button>
 					</SidebarMenuItem>
 				</SidebarMenu>
-				<NavMain items={sidebarData} className="px-0 py-2" />
+				<NavMain items={sidebarData.navMain} className="px-0 py-2" />
 			</SidebarHeader>
 			<SidebarContent>
 				<NavPinnedTags />
 			</SidebarContent>
 			<SidebarFooter>
-				Footer
-				{/* <NavUser user={data.user} /> */}
+				<NavFooter
+					items={sidebarData.navFooter}
+					className="px-0 py-2"
+				/>
 			</SidebarFooter>
 		</Sidebar>
 	);

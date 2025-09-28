@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@skimr/ui/components/button";
 import { ScrollArea } from "@skimr/ui/components/scroll-area";
 import {
 	SidebarGroup,
@@ -9,17 +8,17 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "@skimr/ui/components/sidebar";
-import { IconPinnedOff } from "@tabler/icons-react";
+import NavTagItem from "./nav-tag-item";
 
 const TAGS = [
-	{ name: "Work", color: "cyan" },
-	{ name: "Personal", color: "magenta" },
-	{ name: "Home", color: "green" },
-	{ name: "School", color: "yellow" },
-	{ name: "Travel", color: "orange" },
-	{ name: "Health", color: "pink" },
-	{ name: "Finance", color: "violet" },
-	{ name: "Shopping", color: "indigo" },
+	{ id: 1, name: "Work", isPinned: true },
+	{ id: 2, name: "Personal", isPinned: true },
+	{ id: 3, name: "Home", isPinned: false },
+	{ id: 4, name: "School", isPinned: false },
+	{ id: 5, name: "Travel", isPinned: false },
+	{ id: 6, name: "Health", isPinned: false },
+	{ id: 7, name: "Finance", isPinned: false },
+	{ id: 8, name: "Shopping", isPinned: false },
 ];
 
 export default function NavPinnedTags() {
@@ -31,22 +30,7 @@ export default function NavPinnedTags() {
 					{TAGS.map((tag) => (
 						<SidebarMenuItem key={tag.name}>
 							<SidebarMenuButton tooltip={tag.name} asChild>
-								<div className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium group-navbar">
-									<div className="flex flex-1 items-center gap-2">
-										<div
-											className="h-2 w-2 rounded-full"
-											style={{
-												backgroundColor: tag.color,
-											}}
-										/>
-										<span>{tag.name}</span>
-									</div>
-									<div className="opacity-0 transition-opacity group-navbar-hover:opacity-100">
-										<Button size="icon" variant="ghost">
-											<IconPinnedOff />
-										</Button>
-									</div>
-								</div>
+								<NavTagItem tag={tag} key={tag.id} />
 							</SidebarMenuButton>
 						</SidebarMenuItem>
 					))}
