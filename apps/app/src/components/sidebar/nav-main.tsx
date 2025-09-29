@@ -1,10 +1,15 @@
 "use client";
 
 import type { SidebarDataType } from "@/lib/app-data";
-import type { Icon } from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@skimr/ui/components/sidebar";
+import {
+	SidebarGroup,
+	SidebarGroupContent,
+	SidebarMenu,
+	SidebarMenuButton,
+	SidebarMenuItem,
+} from "@skimr/ui/components/sidebar";
 import { cn } from "@skimr/ui/lib/utils";
 import { IconCirclePlusFilled } from "@tabler/icons-react";
 
@@ -29,7 +34,6 @@ export function NavMain({ items, className }: NavMainProps) {
 							<span>Quick Create</span>
 						</SidebarMenuButton>
 					</SidebarMenuItem>
-
 				</SidebarMenu>
 				<SidebarMenu>
 					{items.map((item) => (

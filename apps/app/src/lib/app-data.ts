@@ -1,5 +1,8 @@
-import type { Icon } from "@tabler/icons-react";
-import { IconChartBar, IconDashboard } from "@tabler/icons-react";
+import {
+	IconChartBar,
+	IconDashboard,
+	IconSettings2,
+} from "@tabler/icons-react";
 
 export const sidebarData = {
 	navMain: [
@@ -13,14 +16,13 @@ export const sidebarData = {
 			url: "/analytics",
 			icon: IconChartBar,
 		},
-	],
-	navFooter: [
 		{
 			title: "Settings",
 			url: "/settings",
-			icon: IconDashboard,
+			icon: IconSettings2,
 		},
 	],
+	navFooter: [],
 };
 
 export type SidebarDataType = (typeof sidebarData)["navMain"][number];
