@@ -1,0 +1,28 @@
+{
+    "name": "@skimr/db",
+    "version": "0.0.0",
+    "private": true,
+    "exports": {
+        ".": "./src/client.ts"
+    },
+    "scripts": {
+        "lint": "eslint . --max-warnings 0",
+        "generate": "prisma generate",
+        "db:migrate:dev": "prisma migrate dev",
+        "db:migrate:deploy": "prisma migrate deploy",
+        "db:push": "prisma db push",
+        "prebuild": "npm run generate",
+        "predev": "npm run generate",
+        "studio": "prisma studio"
+    },
+    "prettier": "@skimr/prettier-config",
+    "devDependencies": {
+        "@skimr/eslint-config": "workspace:*",
+        "@skimr/prettier-config": "workspace:*",
+        "@skimr/tsconfig": "workspace:*",
+        "prisma": "^6.16.2"
+    },
+    "dependencies": {
+        "@prisma/client": "latest"
+    }
+}
