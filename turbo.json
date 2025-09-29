@@ -73,9 +73,6 @@
         "clean": {
             "cache": false
         },
-        "//#clean": {
-            "cache": false
-        },
         "push": {
             "cache": false,
             "interactive": true
@@ -85,8 +82,11 @@
             "persistent": true
         }
     },
+    "globalDependencies": [
+        "**/.env.*local"
+    ],
     "globalEnv": [
-        "POSTGRES_URL",
+        "DATABASE_URL",
         "BETTER_AUTH_SECRET",
         "BETTER_AUTH_TRUSTED_ORIGINS"
     ],

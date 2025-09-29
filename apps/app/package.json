@@ -23,6 +23,7 @@
         "@radix-ui/react-tooltip": "^1.2.8",
         "@radix-ui/react-use-controllable-state": "^1.2.2",
         "@skimr/ui": "workspace:*",
+        "@skimr/db": "workspace:*",
         "@tabler/icons-react": "^3.35.0",
         "class-variance-authority": "^0.7.1",
         "lucide-react": "^0.544.0",
