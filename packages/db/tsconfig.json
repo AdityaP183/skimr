@@ -2,7 +2,7 @@
     "extends": "@skimr/tsconfig/base.json",
     "include": [
         "**/*.ts",
-        "prisma/**/*.prisma"
+        "prisma/**/*.prisma",
     ],
     "exclude": [
         "node_modules",

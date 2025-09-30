@@ -20,17 +20,17 @@
                 "dist/**"
             ]
         },
-        "db:migrate:dev": {
+        "db:migrate": {
             "cache": false,
             "persistent": true
-        },
-        "db:migrate:deploy": {
-            "cache": false
         },
         "db:push": {
             "cache": false
         },
         "db:seed": {
+            "cache": false
+        },
+        "db:generate": {
             "cache": false
         },
         "dev": {
@@ -39,12 +39,6 @@
             ],
             "cache": false,
             "persistent": true
-        },
-        "generate": {
-            "dependsOn": [
-                "^generate"
-            ],
-            "cache": false
         },
         "format": {
             "outputs": [
@@ -82,9 +76,6 @@
             "persistent": true
         }
     },
-    "globalDependencies": [
-        "**/.env.*local"
-    ],
     "globalEnv": [
         "DATABASE_URL",
         "BETTER_AUTH_SECRET",

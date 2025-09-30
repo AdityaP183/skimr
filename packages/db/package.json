@@ -2,18 +2,22 @@
     "name": "@skimr/db",
     "version": "0.0.0",
     "private": true,
+    "type": "module",
     "exports": {
         ".": "./src/client.ts"
     },
     "scripts": {
+        "build": "tsc",
+        "clean": "git clean -xdf .cache .turbo dist node_modules",
+        "dev": "tsc",
         "lint": "eslint . --max-warnings 0",
         "generate": "prisma generate",
-        "db:migrate:dev": "prisma migrate dev",
-        "db:migrate:deploy": "prisma migrate deploy",
-        "db:push": "prisma db push",
+        "migrate": "pnpm with-env prisma migrate dev",
+        "push": "pnpm with-env prisma db push",
         "prebuild": "npm run generate",
         "predev": "npm run generate",
-        "studio": "prisma studio"
+        "studio": "pnpm with-env prisma studio",
+        "with-env": "dotenv -e ../../.env.local --"
     },
     "prettier": "@skimr/prettier-config",
     "devDependencies": {
@@ -23,6 +27,8 @@
         "prisma": "^6.16.2"
     },
     "dependencies": {
-        "@prisma/client": "latest"
+        "@prisma/client": "latest",
+        "@t3-oss/env-nextjs": "^0.13.8",
+        "dotenv-cli": "^10.0.0"
     }
 }
