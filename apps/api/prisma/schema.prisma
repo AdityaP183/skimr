@@ -1,0 +1,27 @@
+generator client {
+    provider = "prisma-client"
+    output   = "../generated/prisma"
+}
+
+datasource db {
+    provider = "postgresql"
+}
+
+// ---------- Enums ----------
+enum Role {
+    ADMIN
+    CREATOR
+}
+
+enum Plan {
+    FREE
+    STARTER
+    ULTIMATE
+}
+
+enum Status {
+    PENDING
+    SUCCESS
+    FAILED
+    CANCELED
+}
