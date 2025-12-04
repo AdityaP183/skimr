@@ -1,6 +1,36 @@
+# dependencies
 node_modules/
+.pnp.*
+.pnp.js
+
+# output
 dist/
+build/
 .next/
+out/
 .turbo/
-*.log
-pnpm-lock.yaml
+
+# env
+.env
+.env.*
+!.env.example
+
+# logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# editor
+.vscode/
+.idea/
+*.swp
+
+# prisma
+apps/*/prisma/*.db
+prisma/*.db
+**/generated/
+
+# misc
+.DS_Store
+*.pem
