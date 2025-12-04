@@ -1,0 +1,31 @@
+{
+	"name": "skimr",
+	"version": "0.0.1",
+	"scripts": {
+		"check": "ultracite check",
+		"fix": "ultracite fix",
+		"prepare": "husky"
+	},
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
+	"devDependencies": {
+		"@biomejs/biome": "2.3.8",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.2.7",
+		"turbo": "^2.6.1",
+		"ultracite": "6.3.8"
+	},
+	"packageManager": "pnpm@10.21.0",
+	"author": "AdityaP183",
+	"license": "ISC",
+	"engines": {
+		"node": ">=20"
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx,json,jsonc,css,scss,md,mdx}": [
+			"pnpm dlx ultracite fix"
+		]
+	}
+}
