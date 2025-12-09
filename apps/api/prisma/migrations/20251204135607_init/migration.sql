@@ -1,8 +1,0 @@
--- CreateEnum
-CREATE TYPE "Role" AS ENUM ('ADMIN', 'CREATOR');
-
--- CreateEnum
-CREATE TYPE "Plan" AS ENUM ('FREE', 'STARTER', 'ULTIMATE');
-
--- CreateEnum
-CREATE TYPE "Status" AS ENUM ('PENDING', 'SUCCESS', 'FAILED', 'CANCELED');
