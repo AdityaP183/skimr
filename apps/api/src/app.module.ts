@@ -23,6 +23,7 @@ import { APP_GUARD } from "@nestjs/core";
 					database: drizzleAdapter(database, {
 						provider: "pg",
 					}),
+					emailAndPassword: { enabled: true },
 				}),
 			}),
 			inject: [DATABASE_CONNECTION],
