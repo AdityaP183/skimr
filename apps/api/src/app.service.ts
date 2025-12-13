@@ -1,8 +1,16 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, Logger } from "@nestjs/common";
 
 @Injectable()
 export class AppService {
-	getHello(): string {
-		return "Hello World!";
+	private readonly logger = new Logger(AppService.name);
+
+	getHealthCheck() {
+		this.logger.debug("Health check requested");
+
+		return {
+			status: "ok",
+			service: "api",
+			timestamp: new Date().toISOString(),
+		};
 	}
 }
