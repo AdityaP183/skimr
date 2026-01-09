@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/styles/globals.css",
+    "baseColor": "gray",
+    "cssVariables": true
+  },
+  "iconLibrary": "hugeicons",
+  "menuColor": "default",
+  "menuAccent": "bold",
+  "aliases": {
+    "components": "@skimr/ui/components",
+    "utils": "@skimr/ui/lib/utils",
+    "ui": "@skimr/ui/components",
+    "lib": "@skimr/ui/lib",
+    "hooks": "@skimr/ui/hooks"
+  },
+  "registries": {
+    "@basecn": "https://basecn.dev/r/{name}.json"
+  }
+}

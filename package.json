@@ -21,7 +21,7 @@
 		"prettier": "^3.6.2",
 		"turbo": "^2.6.2"
 	},
-	"packageManager": "pnpm@10.24.0",
+	"packageManager": "pnpm@10.27.0",
 	"author": "AdityaP183",
 	"license": "ISC",
 	"engines": {
