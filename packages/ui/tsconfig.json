@@ -1,0 +1,18 @@
+{
+    "extends": "@skimr/tsconfig/react-library.json",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@skimr/ui/*": [
+                "./src/*"
+            ]
+        }
+    },
+    "include": [
+        "."
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}
