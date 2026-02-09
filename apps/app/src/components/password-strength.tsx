@@ -37,12 +37,12 @@ export function PasswordStrength({
 		passed === 0
 			? "Very weak"
 			: passed === 1
-			? "Weak"
-			: passed === 2
-			? "Fair"
-			: passed === 3
-			? "Good"
-			: "Strong";
+				? "Weak"
+				: passed === 2
+					? "Fair"
+					: passed === 3
+						? "Good"
+						: "Strong";
 
 	return (
 		<div className={cn("space-y-3", className)}>
@@ -58,12 +58,8 @@ export function PasswordStrength({
 						className={cn(
 							"h-full rounded-full transition-all",
 							strength <= 25 && "bg-destructive",
-							strength > 25 &&
-								strength <= 50 &&
-								"bg-orange-500",
-							strength > 50 &&
-								strength <= 75 &&
-								"bg-yellow-500",
+							strength > 25 && strength <= 50 && "bg-orange-500",
+							strength > 50 && strength <= 75 && "bg-yellow-500",
 							strength > 75 && "bg-green-500",
 						)}
 						style={{ width: `${strength}%` }}

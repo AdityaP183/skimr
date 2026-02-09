@@ -31,7 +31,7 @@ function SocialButton({
 				{socials === "google" ? (
 					<Google className="size-4" />
 				) : (
-					<Apple className="size-4.5"/>
+					<Apple className="size-4.5" />
 				)}
 			</span>
 			<span className="font-semibold">{text}</span>

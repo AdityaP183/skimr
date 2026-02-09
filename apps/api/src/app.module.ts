@@ -20,10 +20,18 @@ import { APP_GUARD } from "@nestjs/core";
 			imports: [DatabaseModule],
 			useFactory: (database: NodePgDatabase) => ({
 				auth: betterAuth({
+					baseURL: process.env.BETTER_AUTH_URL,
 					database: drizzleAdapter(database, {
 						provider: "pg",
 					}),
 					emailAndPassword: { enabled: true },
+					socialProviders: {
+						google: {
+							clientId: process.env.GOOGLE_CLIENT_ID as string,
+							clientSecret: process.env
+								.GOOGLE_CLIENT_SECRET as string,
+						},
+					},
 				}),
 			}),
 			inject: [DATABASE_CONNECTION],

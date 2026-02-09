@@ -1,11 +1,12 @@
 {
 	"extends": "@skimr/tsconfig/react-library.json",
 	"compilerOptions": {
-		"baseUrl": ".",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
 		"paths": {
-			"@skimr/ui/*": ["./src/*"]
+			"@skimr/features/*": ["./src/*"]
 		}
 	},
-	"include": ["."],
+	"include": ["src"],
 	"exclude": ["node_modules", "dist"]
 }

@@ -4,26 +4,25 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import {
-    signInFormSchema
-} from "@/utils/schemas/auth.schema";
+import { signInFormSchema } from "@/utils/schemas/auth.schema";
 import { Button } from "@skimr/ui/components/button";
 import {
-    Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
+	Form,
+	FormControl,
+	FormDescription,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
 } from "@skimr/ui/components/form";
 import { Input } from "@skimr/ui/components/input";
 import { toast } from "@skimr/ui/components/sonner";
-import { Eye, EyeOff, LockKeyhole, Mail } from "lucide-react";
+import { Eye, EyeOff, LoaderPinwheel, LockKeyhole, Mail } from "lucide-react";
 import { useState } from "react";
 
 export default function EmailPasswordSignIn() {
 	const [isVisible, setIsVisible] = useState(false);
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const form = useForm<z.infer<typeof signInFormSchema>>({
 		resolver: zodResolver(signInFormSchema),
@@ -33,8 +32,32 @@ export default function EmailPasswordSignIn() {
 		},
 	});
 
-	function onSubmit(values: z.infer<typeof signInFormSchema>) {
-		toast.success(JSON.stringify(values));
+	async function onSubmit(values: z.infer<typeof signInFormSchema>) {
+		setIsSubmitting(true);
+		try {
+			const response = await fetch(
+				`${process.env.NEXT_PUBLIC_API_URL}/auth/sign-in/email`,
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					credentials: "include",
+					body: JSON.stringify(values),
+				},
+			);
+
+			if (response.ok) {
+				toast.success("User logged in successfully", {
+					description: `${values.email.split(" ")[0]}, please complete the onboarding process and sign in.`,
+				});
+			}
+		} catch (error) {
+			toast.error("Failed to sign-in");
+			console.log("Error in sign-up:", error);
+		} finally {
+			setIsSubmitting(false);
+		}
 	}
 
 	return (
@@ -113,12 +136,20 @@ export default function EmailPasswordSignIn() {
 										</Button>
 									</div>
 								</FormControl>
-								<FormMessage className="text-wrap"/>
+								<FormMessage className="text-wrap" />
 							</FormItem>
 						)}
 					/>
-					<Button type="submit" className="w-full">
-						Submit
+					<Button
+						type="submit"
+						className="w-full"
+						disabled={isSubmitting}
+					>
+						{isSubmitting ? (
+							<LoaderPinwheel className="animate-spin" />
+						) : (
+							"Submit"
+						)}
 					</Button>
 				</form>
 			</Form>

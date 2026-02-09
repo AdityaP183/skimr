@@ -3,13 +3,15 @@ import { Separator } from "@skimr/ui/components/separator";
 import { SocialButton } from "@skimr/ui/components/social-button";
 import { cn } from "@skimr/ui/lib/utils";
 import Link from "next/link";
-import EmailPasswordSignIn from "../sign-up/email-password.signin";
+import EmailPasswordSignIn from "./_components/email-password.signin";
 
 export default function SignInPage() {
 	return (
 		<div className="flex items-center justify-center w-full min-h-screen relative">
 			<div className="flex flex-col items-center w-sm">
-				<h1 className="text-2xl font-bold mb-5">Sign in to your account</h1>
+                <h1 className="text-2xl font-bold mb-5">
+                    Sign in to your account
+                </h1>
 				<div className="flex items-center gap-5 w-full">
 					<SocialButton size="lg" className="flex-1" text="Google" />
 					<SocialButton

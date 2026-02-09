@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { LoaderPinwheel } from "lucide-react";
 
 import {
 	Form,
@@ -20,9 +21,13 @@ import { Eye, EyeOff, LockKeyhole, Mail, User } from "lucide-react";
 import { useState } from "react";
 import { PasswordStrength } from "@/components/password-strength";
 import { toast } from "@skimr/ui/components/sonner";
+import { useRouter } from "next/navigation";
 
 export default function EmailPasswordSignUp() {
+	const router = useRouter();
+
 	const [isVisible, setIsVisible] = useState(false);
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const form = useForm<z.infer<typeof signUpFormSchema>>({
 		resolver: zodResolver(signUpFormSchema),
@@ -33,8 +38,32 @@ export default function EmailPasswordSignUp() {
 		},
 	});
 
-	function onSubmit(values: z.infer<typeof signUpFormSchema>) {
-		toast.success(JSON.stringify(values));
+	async function onSubmit(values: z.infer<typeof signUpFormSchema>) {
+		setIsSubmitting(true);
+		try {
+			const response = await fetch(
+				`${process.env.NEXT_PUBLIC_API_URL}/auth/sign-up/email`,
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(values),
+				},
+			);
+
+			if (response.ok) {
+				toast.success("Account created successfully", {
+					description: `${values.name.split(" ")[0]}, please complete the onboarding process and sign in.`,
+				});
+				router.push("/auth/onboarding");
+			}
+		} catch (error) {
+			toast.error("Failed to sign-in");
+			console.log("Error in sign-up:", error);
+		} finally {
+			setIsSubmitting(false);
+		}
 	}
 
 	return (
@@ -159,8 +188,16 @@ export default function EmailPasswordSignUp() {
 							</FormItem>
 						)}
 					/>
-					<Button type="submit" className="w-full">
-						Submit
+					<Button
+						type="submit"
+						className="w-full"
+						disabled={isSubmitting}
+					>
+						{isSubmitting ? (
+							<LoaderPinwheel className="animate-spin" />
+						) : (
+							"Submit"
+						)}
 					</Button>
 				</form>
 			</Form>
