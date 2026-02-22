@@ -1,5 +1,15 @@
 import { relations } from "drizzle-orm";
-import { pgTable, text, timestamp, boolean, index } from "drizzle-orm/pg-core";
+import {
+	pgTable,
+	text,
+	timestamp,
+	boolean,
+	index,
+	pgEnum,
+} from "drizzle-orm/pg-core";
+
+// Better Auth Tables
+export const roles = pgEnum("role", ["admin", "creator", "user"]);
 
 export const user = pgTable("user", {
 	id: text("id").primaryKey(),
@@ -12,6 +22,7 @@ export const user = pgTable("user", {
 		.defaultNow()
 		.$onUpdate(() => /* @__PURE__ */ new Date())
 		.notNull(),
+	role: roles("role").notNull().default("user"),
 });
 
 export const session = pgTable(
@@ -72,6 +83,8 @@ export const verification = pgTable(
 	},
 	(table) => [index("verification_identifier_idx").on(table.identifier)],
 );
+
+// Better Auth Relations
 
 export const userRelations = relations(user, ({ many }) => ({
 	sessions: many(session),

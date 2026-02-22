@@ -1,24 +1,17 @@
 import { buttonVariants } from "@skimr/ui/components/button";
 import { Separator } from "@skimr/ui/components/separator";
-import { SocialButton } from "@skimr/ui/components/social-button";
 import { cn } from "@skimr/ui/lib/utils";
 import Link from "next/link";
-import EmailPasswordSignUp from "./email-password.signup";
+import EmailPasswordSignUp from "./_components/email-password.signup";
+import SocialProviderSignUp from "./_components/social-providers.signup";
 
 export default function SignUpPage() {
 	return (
 		<div className="flex items-center justify-center w-full min-h-screen relative">
 			<div className="flex flex-col items-center w-sm">
 				<h1 className="text-2xl font-bold mb-5">Create an account</h1>
-				<div className="flex items-center gap-5 w-full">
-					<SocialButton size="lg" className="flex-1" text="Google" />
-					<SocialButton
-						size="lg"
-						className="flex-1"
-						text="Apple"
-						socials="apple"
-					/>
-				</div>
+				<SocialProviderSignUp />
+
 				<div className="my-6 w-full flex items-center justify-center gap-2 overflow-hidden">
 					<Separator className="flex-1" />
 					<span className="text-[13px] text-muted-foreground text-nowrap">
@@ -49,7 +42,10 @@ export default function SignUpPage() {
 					}),
 				)}
 			>
-				<Link href="/auth/sign-in" className="no-underline hover:underline">
+				<Link
+					href="/auth/sign-in"
+					className="no-underline hover:underline"
+				>
 					Sign In
 				</Link>
 			</div>
