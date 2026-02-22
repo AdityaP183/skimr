@@ -1,5 +1,6 @@
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
+import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
 import { ConfigService } from "@nestjs/config";
 
 async function bootstrap() {
@@ -9,6 +10,15 @@ async function bootstrap() {
 	const configService = app.get(ConfigService);
 
 	app.setGlobalPrefix("api");
+
+	const config = new DocumentBuilder()
+		.setTitle("Skimr Docs")
+		.setDescription("The skimr API description")
+		.setVersion("1.0")
+		.addTag("skimr")
+		.build();
+	const documentFactory = () => SwaggerModule.createDocument(app, config);
+	SwaggerModule.setup("docs", app, documentFactory);
 
 	const allowedOrigins = configService
 		.getOrThrow<string>("APP_CORS_ORIGINS")

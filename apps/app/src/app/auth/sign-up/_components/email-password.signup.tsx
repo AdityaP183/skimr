@@ -56,7 +56,7 @@ export default function EmailPasswordSignUp() {
 				toast.success("Account created successfully", {
 					description: `${values.name.split(" ")[0]}, please complete the onboarding process and sign in.`,
 				});
-				router.push("/auth/onboarding");
+				router.push("/auth/sign-in");
 			}
 		} catch (error) {
 			toast.error("Failed to sign-in");

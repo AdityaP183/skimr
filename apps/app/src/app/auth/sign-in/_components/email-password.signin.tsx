@@ -19,6 +19,7 @@ import { Input } from "@skimr/ui/components/input";
 import { toast } from "@skimr/ui/components/sonner";
 import { Eye, EyeOff, LoaderPinwheel, LockKeyhole, Mail } from "lucide-react";
 import { useState } from "react";
+import { authClient } from "@/utils/auth-client";
 
 export default function EmailPasswordSignIn() {
 	const [isVisible, setIsVisible] = useState(false);
@@ -35,26 +36,24 @@ export default function EmailPasswordSignIn() {
 	async function onSubmit(values: z.infer<typeof signInFormSchema>) {
 		setIsSubmitting(true);
 		try {
-			const response = await fetch(
-				`${process.env.NEXT_PUBLIC_API_URL}/auth/sign-in/email`,
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					credentials: "include",
-					body: JSON.stringify(values),
-				},
-			);
+			const response = await authClient.signIn.email({
+				...values,
+				rememberMe: true,
+				callbackURL: "/",
+			});
 
-			if (response.ok) {
+			if (response.data) {
 				toast.success("User logged in successfully", {
-					description: `${values.email.split(" ")[0]}, please complete the onboarding process and sign in.`,
+					description: `Welcome back, ${response.data.user.name || response.data.user.email.split("@")[0]}!`,
 				});
 			}
 		} catch (error) {
-			toast.error("Failed to sign-in");
-			console.log("Error in sign-up:", error);
+			toast.error("Failed to sign-in", {
+				description:
+					error instanceof Error
+						? error.message
+						: "An unknown error occurred while signing in",
+			});
 		} finally {
 			setIsSubmitting(false);
 		}

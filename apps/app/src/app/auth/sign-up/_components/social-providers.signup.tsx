@@ -8,7 +8,10 @@ import { useRouter } from "next/navigation";
 export default function SocialProviderSignUp() {
 	const router = useRouter();
 	async function googleSignUp() {
-		const response = await signIn.social({ provider: "google" });
+		const response = await signIn.social({
+			provider: "google",
+			callbackURL: process.env.NEXT_PUBLIC_APP_URL,
+		});
 
 		if (response.data) {
 			toast.success("Google sign-up successful");
