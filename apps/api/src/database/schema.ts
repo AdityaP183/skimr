@@ -9,7 +9,7 @@ import {
 } from "drizzle-orm/pg-core";
 
 // Better Auth Tables
-export const roles = pgEnum("role", ["admin", "creator", "user"]);
+export const roles = pgEnum("role", ["ADMIN", "CREATOR", "USER"]);
 
 export const user = pgTable("user", {
 	id: text("id").primaryKey(),
@@ -22,7 +22,7 @@ export const user = pgTable("user", {
 		.defaultNow()
 		.$onUpdate(() => /* @__PURE__ */ new Date())
 		.notNull(),
-	role: roles("role").notNull().default("user"),
+	role: roles("role").notNull().default("USER"),
 });
 
 export const session = pgTable(

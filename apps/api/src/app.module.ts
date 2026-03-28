@@ -33,6 +33,16 @@ import { UsersModule } from "./users/users.module";
 								.GOOGLE_CLIENT_SECRET as string,
 						},
 					},
+					user: {
+						additionalFields: {
+							role: {
+								type: "string",
+								required: true,
+								defaultValue: "USER",
+								input: false,
+							},
+						},
+					},
 				}),
 			}),
 			inject: [DATABASE_CONNECTION],
