@@ -19,7 +19,7 @@ interface DragNDropImageProps {
 }
 
 export function DragNDropImage({
-    className,
+	className,
 	setFile,
 	ratio,
 	width,

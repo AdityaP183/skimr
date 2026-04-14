@@ -6,7 +6,7 @@ export default async function TestingPage() {
 	return (
 		<div className="w-full min-h-screen flex items-center justify-center">
 			User Session
-            <br />
+			<br />
 			{user ? "No Session found" : JSON.stringify(user)}
 		</div>
 	);

@@ -1,15 +1,23 @@
 import { relations } from "drizzle-orm";
 import {
-	pgTable,
-	text,
-	timestamp,
 	boolean,
 	index,
 	pgEnum,
+	pgTable,
+	text,
+	timestamp,
+	uniqueIndex,
 } from "drizzle-orm/pg-core";
 
-// Better Auth Tables
+/////////////////////////////////////////////////////
+// Enums
+/////////////////////////////////////////////////////
+
 export const roles = pgEnum("role", ["ADMIN", "CREATOR", "USER"]);
+
+/////////////////////////////////////////////////////
+// Core Tables
+/////////////////////////////////////////////////////
 
 export const user = pgTable("user", {
 	id: text("id").primaryKey(),
@@ -34,7 +42,8 @@ export const session = pgTable(
 		createdAt: timestamp("created_at").defaultNow().notNull(),
 		updatedAt: timestamp("updated_at")
 			.$onUpdate(() => /* @__PURE__ */ new Date())
-			.notNull(),
+			.notNull()
+			.defaultNow(),
 		ipAddress: text("ip_address"),
 		userAgent: text("user_agent"),
 		userId: text("user_id")
@@ -63,7 +72,8 @@ export const account = pgTable(
 		createdAt: timestamp("created_at").defaultNow().notNull(),
 		updatedAt: timestamp("updated_at")
 			.$onUpdate(() => /* @__PURE__ */ new Date())
-			.notNull(),
+			.notNull()
+			.defaultNow(),
 	},
 	(table) => [index("account_userId_idx").on(table.userId)],
 );
@@ -84,11 +94,35 @@ export const verification = pgTable(
 	(table) => [index("verification_identifier_idx").on(table.identifier)],
 );
 
-// Better Auth Relations
+export const collection = pgTable(
+	"collections",
+	{
+		id: text("id").primaryKey(),
+		name: text("name").notNull(),
+		description: text("description"),
+		color: text("color"),
+		userId: text("user_id")
+			.notNull()
+			.references(() => user.id, { onDelete: "cascade" }),
+		createdAt: timestamp("created_at").defaultNow().notNull(),
+		updatedAt: timestamp("updated_at")
+			.defaultNow()
+			.$onUpdate(() => /* @__PURE__ */ new Date())
+			.notNull(),
+	},
+	(table) => [
+		uniqueIndex("user_id_name_unique_idx").on(table.userId, table.name),
+	],
+);
+
+/////////////////////////////////////////////////////
+// Relations
+/////////////////////////////////////////////////////
 
 export const userRelations = relations(user, ({ many }) => ({
 	sessions: many(session),
 	accounts: many(account),
+	collections: many(collection),
 }));
 
 export const sessionRelations = relations(session, ({ one }) => ({
@@ -101,6 +135,13 @@ export const sessionRelations = relations(session, ({ one }) => ({
 export const accountRelations = relations(account, ({ one }) => ({
 	user: one(user, {
 		fields: [account.userId],
+		references: [user.id],
+	}),
+}));
+
+export const collectionRelations = relations(collection, ({ one }) => ({
+	user: one(user, {
+		fields: [collection.userId],
 		references: [user.id],
 	}),
 }));

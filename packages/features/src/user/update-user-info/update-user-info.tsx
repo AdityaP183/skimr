@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { cn } from "@skimr/ui/lib/utils";
 import Image from "next/image";
@@ -13,9 +13,7 @@ export function UpdateUserInfo({ className }: UpdateUserInfoProps) {
 			{/* Profile Image */}
 
 			{/* Workspace Icon */}
-			<div className="space-y-2">
-                hello
-			</div>
+			<div className="space-y-2">hello</div>
 			{/* Workspace Name */}
 			{/* Workspace Url */}
 		</div>

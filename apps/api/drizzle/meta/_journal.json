@@ -1,13 +1,27 @@
 {
-  "version": "7",
-  "dialect": "postgresql",
-  "entries": [
-    {
-      "idx": 0,
-      "version": "7",
-      "when": 1774193096684,
-      "tag": "0000_purple_mysterio",
-      "breakpoints": true
-    }
-  ]
+	"version": "7",
+	"dialect": "postgresql",
+	"entries": [
+		{
+			"idx": 0,
+			"version": "7",
+			"when": 1774193096684,
+			"tag": "0000_purple_mysterio",
+			"breakpoints": true
+		},
+		{
+			"idx": 1,
+			"version": "7",
+			"when": 1774768763401,
+			"tag": "0001_far_starhawk",
+			"breakpoints": true
+		},
+		{
+			"idx": 2,
+			"version": "7",
+			"when": 1776007516137,
+			"tag": "0002_mixed_pretty_boy",
+			"breakpoints": true
+		}
+	]
 }

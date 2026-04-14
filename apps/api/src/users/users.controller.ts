@@ -1,12 +1,12 @@
 import { Controller, Get, Req } from "@nestjs/common";
 import {
-	AuthService,
 	Session,
+	AuthService,
 	type UserSession,
 } from "@thallesp/nestjs-better-auth";
 import { fromNodeHeaders } from "better-auth/node";
 import type { Request as ExpressRequest } from "express";
-import { auth } from "src/auth/auth";
+import type { auth } from "src/auth/auth";
 
 @Controller("users")
 export class UsersController {

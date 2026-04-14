@@ -15,7 +15,7 @@ export default function SocialProviderSignUp() {
 
 		if (response.data) {
 			toast.success("Google sign-up successful");
-            router.push("/");
+			router.push("/");
 		} else {
 			toast.error("Google sign-up failed");
 		}
