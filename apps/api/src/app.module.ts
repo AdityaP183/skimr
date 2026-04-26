@@ -1,3 +1,9 @@
+import { AppController } from "@/app.controller";
+import { AppService } from "@/app.service";
+import { CollectionsModule } from "@/collections/collections.module";
+import { DATABASE_CONNECTION } from "@/database/database.connection";
+import { DatabaseModule } from "@/database/database.module";
+import { UsersModule } from "@/users/users.module";
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { APP_GUARD } from "@nestjs/core";
@@ -5,12 +11,7 @@ import { AuthGuard, AuthModule } from "@thallesp/nestjs-better-auth";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import type { NodePgDatabase } from "drizzle-orm/node-postgres";
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
-import { DATABASE_CONNECTION } from "./database/database.connection";
-import { DatabaseModule } from "./database/database.module";
-import { UsersModule } from "./users/users.module";
-import { CollectionsModule } from "./collections/collections.module";
+import { LoggerModule } from "@/logger/logger.module";
 
 @Module({
 	imports: [
@@ -50,6 +51,7 @@ import { CollectionsModule } from "./collections/collections.module";
 		}),
 		UsersModule,
 		CollectionsModule,
+		LoggerModule,
 	],
 	controllers: [AppController],
 	providers: [
